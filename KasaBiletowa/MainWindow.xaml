@@ -6,6 +6,14 @@
         xmlns:local="clr-namespace:KasaBiletowa"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_OnLoaded">
-    <Grid />
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <StackPanel>
+            <Label x:Name="Greeting" Content="{Binding Path=LoggedUser.Imie}" ContentStringFormat="Witaj {0} w kasie biletowej" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+            <Button Content="Kup bilet" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Click="ButtonBase_OnClick"/>
+        </StackPanel>
+    </Grid>
 
 </Window>

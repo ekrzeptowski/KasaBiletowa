@@ -9,6 +9,7 @@ public class Klient
     public string? Imie { get; init; }
     public string? Nazwisko { get; init; }
     public string Email { get; init; } = string.Empty;
+    public string Haslo { get; init; } = string.Empty;
     public string? Telefon { get; init; }
     public virtual ICollection<Bilet> Bilety { get; private init; } = new ObservableCollection<Bilet>();
 }

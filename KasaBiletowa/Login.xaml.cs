@@ -15,7 +15,6 @@ public partial class Login : Window
         InitializeComponent();
     }
 
-
     private void Zaloguj_OnClick(object sender, RoutedEventArgs e)
     {
         // compare login and password with database

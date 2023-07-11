@@ -76,9 +76,41 @@ namespace KasaBiletowa
             _context.SaveChanges();
         }
 
+        // add random connections for the next 7 days, 40-50 per day, calculate travel time from stacja a to stacja b and add it to dataodjazdu
+        private void InitConnections()
+        {
+            var lastConnection = _context.Polaczenia.OrderByDescending(p => p.DataOdjazdu).FirstOrDefault();
+            if (lastConnection != null && lastConnection.DataOdjazdu < DateTime.Now.AddDays(7)) return;
+
+            var random = new Random();
+            var stacje = _context.Stacje.ToList();
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < random.Next(40, 50); j++)
+                {
+                    var dataOdjazdu = DateTime.Now.AddDays(i).AddHours(random.Next(0, 24))
+                        .AddMinutes(random.Next(0, 60));
+                    var stacjaPoczatkowa = stacje[random.Next(0, stacje.Count)];
+                    var stacjaKoncowa = stacje[random.Next(0, stacje.Count)];
+                    var connection = new Polaczenie
+                    {
+                        DataOdjazdu = dataOdjazdu,
+                        DataPrzyjazdu = dataOdjazdu.AddMinutes(stacjaPoczatkowa.Odleglosc(stacjaKoncowa) /
+                            (double)random.Next(40, 100) * 60),
+                        StacjaPoczatkowa = stacjaPoczatkowa,
+                        StacjaKoncowa = stacjaKoncowa,
+                    };
+                    _context.Polaczenia.Add(connection);
+                }
+            }
+
+            _context.SaveChanges();
+        }
+
         private void ApplicationStart(object sender, StartupEventArgs e)
         {
             InitDatabase();
+            InitConnections();
             if (!_context.Klienci.Any())
             {
                 Register register = new();

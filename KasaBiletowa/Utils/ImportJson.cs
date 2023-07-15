@@ -20,7 +20,8 @@ public static class ImportJson
         string filename = dlg.FileName;
         string json = System.IO.File.ReadAllText(filename);
         var data = Newtonsoft.Json.JsonConvert.DeserializeObject<StacjaJson[]>(json);
-        List<StacjaJson>? stacje = (data ?? Array.Empty<StacjaJson>()).Where(station => station.country is "Polska")
+        var stacje = (data ?? Array.Empty<StacjaJson>()).Where(station =>
+                station is { country: "Polska", name: not null and not "", latitude: not null, longitude: not null })
             .ToList();
 
         MessageBox.Show($"Liczba stacji w Polsce: {stacje.Count}");

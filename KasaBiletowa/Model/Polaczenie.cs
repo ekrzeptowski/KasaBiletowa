@@ -11,4 +11,9 @@ public class Polaczenie
     public int IdStacjiKoncowej { get; init; }
     public DateTime DataOdjazdu { get; init; }
     public DateTime DataPrzyjazdu { get; init; }
+
+    public string GodzinaOdjazdu => DataOdjazdu.ToString("HH:mm");
+    public string GodzinaPrzyjazdu => DataPrzyjazdu.ToString("HH:mm");
+    public string CzasPodrozy => new TimeOnly(DataPrzyjazdu.Ticks - DataOdjazdu.Ticks).ToString("HH:mm");
+    public string Odleglosc => $"{StacjaPoczatkowa.Odleglosc(StacjaKoncowa):F0} km";
 }

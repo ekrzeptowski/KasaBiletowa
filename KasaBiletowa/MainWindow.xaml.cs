@@ -34,7 +34,8 @@ namespace KasaBiletowa
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var kupBilet = new WyszukajBilet();
+            kupBilet.Show();
         }
     }
 }

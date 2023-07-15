@@ -1,0 +1,61 @@
+﻿<Window x:Class="KasaBiletowa.WyszukajBilet"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:KasaBiletowa"
+        xmlns:viewModel="clr-namespace:KasaBiletowa.ViewModel"
+        mc:Ignorable="d"
+        Title="Wyszukiwanie połączeń" Height="450" Width="800">
+    <Window.DataContext>
+        <viewModel:WyszukajBiletViewModel />
+    </Window.DataContext>
+    <Grid>
+        <StackPanel>
+            <WrapPanel>
+                <StackPanel Margin="5,0">
+                    <Label Content="Data odjazdu:" />
+                    <DatePicker x:Name="DataOdjazdu" SelectedDate="{Binding Path=DataOdjazdu, Mode=TwoWay}" Width="200" />
+                </StackPanel>
+                <StackPanel Margin="5,0">
+                    <Label>Stacja początkowa:</Label>
+                    <ComboBox IsEditable="True" x:Name="StacjaPoczatkowa" Width="200"
+                              ItemsSource="{Binding StacjePoczatkowe}" SelectedValue="{Binding Path=StacjaPoczatkowa}" />
+                </StackPanel>
+                <StackPanel Margin="5,0">
+                    <Label>Stacja końcowa:</Label>
+                    <ComboBox IsEditable="True" x:Name="StacjaKoncowa" Width="200"
+                              ItemsSource="{Binding StacjeKoncowe}"
+                              SelectedValue="{Binding Path=StacjaKoncowa}" />
+                </StackPanel>
+                <Button x:Name="SearchButton" Content="Szukaj" Margin="5,0" Width="100" Click="SearchButton_OnClick" />
+
+            </WrapPanel>
+            <!-- Filtered Polaczenie datagrid -->
+            <DataGrid x:Name="FilteredPolaczenia" AutoGenerateColumns="False"
+                      ItemsSource="{Binding Path=FilteredPolaczenia, Mode=OneWay}" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding GodzinaOdjazdu, Mode=OneWay}" Header="Godzina odjazdu" />
+                    <DataGridTextColumn Binding="{Binding GodzinaPrzyjazdu, Mode=OneWay}" Header="Godzina przyjazdu" />
+                    <DataGridTextColumn Binding="{Binding StacjaPoczatkowa.Name, Mode=OneWay}"
+                                        Header="Stacja początkowa" />
+                    <DataGridTextColumn Binding="{Binding StacjaKoncowa.Name, Mode=OneWay}" Header="Stacja końcowa" />
+                    <DataGridTextColumn Binding="{Binding CzasPodrozy, Mode=OneWay}" Header="Czas podróży" />
+                    <DataGridTextColumn Binding="{Binding Odleglosc, Mode=OneWay}" Header="Odległość" />
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <!-- Add button to buy ticket -->
+                                <Button x:Name="KupBiletButton"
+                                        Click="KupBiletButton_OnClick"
+                                        CommandParameter="{Binding PolaczenieId}">
+                                    Kup bilet
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Window>

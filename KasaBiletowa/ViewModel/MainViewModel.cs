@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using KasaBiletowa.Model;
 
-namespace KasaBiletowa;
+namespace KasaBiletowa.ViewModel;
 
 public class MainViewModel
 {

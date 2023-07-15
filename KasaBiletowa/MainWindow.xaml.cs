@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using KasaBiletowa.Model;
 using KasaBiletowa.Utils;
+using KasaBiletowa.ViewModel;
 
 namespace KasaBiletowa
 {

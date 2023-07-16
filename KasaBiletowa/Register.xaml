@@ -5,6 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:KasaBiletowa"
         mc:Ignorable="d"
+        Closing="Register_OnClosed"
         Title="Rejestracja" ResizeMode="NoResize" Height="310" Width="410">
     <Grid>
         <StackPanel>

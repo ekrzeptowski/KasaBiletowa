@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using KasaBiletowa.Model;
 
@@ -12,6 +13,14 @@ public partial class Register : Window
     {
         InitializeComponent();
     }
+
+    // Open Login window on close
+    private void Register_OnClosed(object? sender, EventArgs e)
+    {
+        var login = new Login();
+        login.Show();
+    }
+
 
     private void ButtonRegister_OnClick(object sender, RoutedEventArgs e)
     {

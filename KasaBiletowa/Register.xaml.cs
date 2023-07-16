@@ -63,8 +63,6 @@ public partial class Register : Window
         _context.SaveChanges();
 
         MessageBox.Show("Zarejestrowano pomyślnie, teraz możesz się zalogować");
-        var login = new Login();
-        login.Show();
         Close();
     }
 }

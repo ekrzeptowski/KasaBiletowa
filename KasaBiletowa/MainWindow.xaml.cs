@@ -23,6 +23,17 @@ namespace KasaBiletowa
             InitializeComponent();
         }
 
+        public MainWindow(bool updateNumberOfTickets)
+        {
+            var mainViewModel = new MainViewModel();
+            DataContext = mainViewModel;
+            InitializeComponent();
+            if (updateNumberOfTickets)
+            {
+                mainViewModel.UpdateNumberOfTickets();
+            }
+        }
+
         private void Window_OnLoaded(object sender, RoutedEventArgs e)
         {
         }
@@ -45,6 +56,13 @@ namespace KasaBiletowa
             Global.UnsetLoggedUser();
             var login = new Login();
             login.Show();
+            Close();
+        }
+
+        private void MojeBiletyButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var mojeBilety = new MojeBiletyWindow();
+            mojeBilety.Show();
             Close();
         }
     }

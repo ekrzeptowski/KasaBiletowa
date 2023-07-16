@@ -1,0 +1,32 @@
+﻿<Window x:Class="KasaBiletowa.MojeBiletyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:KasaBiletowa"
+        xmlns:viewModel="clr-namespace:KasaBiletowa.ViewModel"
+        mc:Ignorable="d"
+        Title="MojeBiletyWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <viewModel:MojeBiletyViewModel />
+    </Window.DataContext>
+    <Grid>
+        <ListView x:Name="ListViewBilety" ItemsSource="{Binding Bilety}" FontSize="20">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Polaczenie.DzienOdjazdu }" />
+                        <TextBlock Text=" | " />
+                        <TextBlock Text="{Binding Polaczenie.GodzinaOdjazdu }" />
+                        <TextBlock Text=" - " />
+                        <TextBlock Text="{Binding Polaczenie.GodzinaPrzyjazdu }" />
+                        <TextBlock Text=" | " />
+                        <TextBlock Text="{Binding Polaczenie.StacjaPoczatkowa.Name }" />
+                        <TextBlock Text=" - " />
+                        <TextBlock Text="{Binding Polaczenie.StacjaKoncowa.Name }" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>

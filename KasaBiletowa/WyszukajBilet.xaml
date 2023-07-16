@@ -42,6 +42,7 @@
                     <DataGridTextColumn Binding="{Binding StacjaKoncowa.Name, Mode=OneWay}" Header="Stacja końcowa" />
                     <DataGridTextColumn Binding="{Binding CzasPodrozy, Mode=OneWay}" Header="Czas podróży" />
                     <DataGridTextColumn Binding="{Binding Odleglosc, Mode=OneWay}" Header="Odległość" />
+                    <DataGridTextColumn Binding="{Binding Cena, Mode=OneWay}" Header="Cena" />
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

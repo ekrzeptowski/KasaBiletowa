@@ -37,6 +37,15 @@ namespace KasaBiletowa
         {
             var kupBilet = new WyszukajBilet();
             kupBilet.Show();
+            Close();
+        }
+
+        private void WylogujButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            Global.UnsetLoggedUser();
+            var login = new Login();
+            login.Show();
+            Close();
         }
     }
 }

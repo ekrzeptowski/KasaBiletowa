@@ -45,6 +45,8 @@ public partial class WyszukajBilet : Window
 
         MessageBox.Show($"Kupiono bilet relacji {relacja?.StacjaPoczatkowa.Name} - {relacja?.StacjaKoncowa.Name}");
         _context.SaveChanges();
+        var main = new MainWindow(true);
+        main.Show();
         Close();
     }
 }

@@ -14,7 +14,9 @@
         <StackPanel>
             <Label x:Name="Greeting" Content="{Binding Path=LoggedUser.Imie}" ContentStringFormat="Witaj {0} w kasie biletowej" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
             <Label x:Name="Connections" Content="{Binding Path=NumberOfConnections}" ContentStringFormat="W naszej kasie możesz znaleźć {0} kierunków połączeń"/>
-            <Button Content="Kup bilet" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Click="ButtonBase_OnClick"/>
+            <Label x:Name="BuyedTickets" Content="{Binding NumberOfTickets}" ContentStringFormat="Posiadasz {0} biletów"/>
+            <Button x:Name="KupBiletButton" Content="Kup bilet" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Click="ButtonBase_OnClick"/>
+            <Button x:Name="WylogujButton" Content="Wyloguj" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Click="WylogujButton_OnClick"/>
         </StackPanel>
     </Grid>
 

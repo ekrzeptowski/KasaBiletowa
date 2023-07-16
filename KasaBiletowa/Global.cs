@@ -16,4 +16,14 @@ public class Global
 
         LoggedUser = user;
     }
+
+    public static void UnsetLoggedUser()
+    {
+        if (LoggedUser == null)
+        {
+            throw new Exception("User not logged in");
+        }
+
+        LoggedUser = null;
+    }
 }

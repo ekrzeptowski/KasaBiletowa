@@ -8,16 +8,23 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_OnLoaded">
     <Window.DataContext>
-        <viewModel:MainViewModel/>
+        <viewModel:MainViewModel />
     </Window.DataContext>
     <Grid>
         <StackPanel>
-            <Label x:Name="Greeting" Content="{Binding Path=LoggedUser.Imie}" ContentStringFormat="Witaj {0} w kasie biletowej" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
-            <Label x:Name="Connections" Content="{Binding Path=NumberOfConnections}" ContentStringFormat="W naszej kasie możesz znaleźć {0} kierunków połączeń"/>
-            <Label x:Name="BuyedTickets" Content="{Binding NumberOfTickets}" ContentStringFormat="Posiadasz {0} biletów"/>
-            <Button x:Name="KupBiletButton" Content="Kup bilet" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Click="ButtonBase_OnClick"/>
-            <Button x:Name="MojeBiletyButton" Content="Moje bilety" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Click="MojeBiletyButton_OnClick" />
-            <Button x:Name="WylogujButton" Content="Wyloguj" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Click="WylogujButton_OnClick"/>
+            <Label x:Name="Greeting" Content="{Binding Path=LoggedUser.Imie}"
+                   ContentStringFormat="Witaj {0} w kasie biletowej" HorizontalAlignment="Center"
+                   VerticalAlignment="Center" FontSize="30" />
+            <Label x:Name="Connections" Content="{Binding Path=NumberOfConnections}"
+                   ContentStringFormat="W naszej kasie możesz znaleźć {0} kierunków połączeń" />
+            <Label x:Name="BuyedTickets" Content="{Binding NumberOfTickets}"
+                   ContentStringFormat="Posiadasz {0} biletów" />
+            <Button x:Name="KupBiletButton" Content="Kup bilet" Margin="0,5" HorizontalAlignment="Center"
+                    VerticalAlignment="Center" FontSize="20" Click="ButtonBase_OnClick" />
+            <Button x:Name="MojeBiletyButton" Content="Moje bilety" Margin="0,5" HorizontalAlignment="Center"
+                    VerticalAlignment="Center" FontSize="20" Click="MojeBiletyButton_OnClick" />
+            <Button x:Name="WylogujButton" Content="Wyloguj" Margin="0,5" HorizontalAlignment="Center"
+                    VerticalAlignment="Center" FontSize="20" Click="WylogujButton_OnClick" />
         </StackPanel>
     </Grid>
 

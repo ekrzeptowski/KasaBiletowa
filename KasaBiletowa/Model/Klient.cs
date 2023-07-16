@@ -11,5 +11,5 @@ public class Klient
     public string Email { get; init; } = string.Empty;
     public string Haslo { get; init; } = string.Empty;
     public string? Telefon { get; init; }
-    public virtual ICollection<Bilet> Bilety { get; private init; } = new ObservableCollection<Bilet>();
+    public virtual ICollection<Bilet> Bilety { get; } = new List<Bilet>();
 }
